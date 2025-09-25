@@ -20,7 +20,8 @@ create table silver.crm_prd_info(
 	prd_cost int,
 	prd_line nvarchar(50),
 	prd_start_dt datetime,
-	prd_end_dt datetime
+	prd_end_dt datetime,
+	dwh_create_date datetime2 default getdate()
 );
 if OBJECT_ID('silver.crm_sales_details', 'U') is not null
  drop table silver.crm_sales_details;
@@ -33,24 +34,30 @@ create table silver.crm_sales_details(
 	sls_due_dt int,
 	sls_sales int,
 	sls_quantity int,
-	sls_price int
+	sls_price int,
+	dwh_create_date datetime2 default getdate()
 );
-
+if OBJECT_ID('silver.erp_CUST_AZ12' , 'U') is not null
+	drop table silver.erp_CUST_AZ12
 create table silver.erp_CUST_AZ12(
 	cid nvarchar(50),
 	bdate date,
-	gen nvarchar(50)
+	gen nvarchar(50),
+	dwh_create_date datetime2 default getdate()
 );
-
+if OBJECT_ID('silver.erp_LOC_A101' , 'U') is not null
+	drop table silver.erp_LOC_A101
 create table silver.erp_LOC_A101(
 	cid nvarchar(50),
-	cntry nvarchar(50)
+	cntry nvarchar(50),
+	dwh_create_date datetime2 default getdate()
 );
-
+if OBJECT_ID('silver.erp_PX_CAT_G1V2' , 'U') is not null
+	drop table silver.erp_PX_CAT_G1V2
 create table silver.erp_PX_CAT_G1V2(
 	id nvarchar(50),
 	cat nvarchar(50),
 	subcat nvarchar(50),
-	maintenance nvarchar(50)
+	maintenance nvarchar(50),
+	dwh_create_date datetime2 default getdate()
 );
-
